@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI/Level/Level.uss?fileID=7433441132597879392&amp;guid=9eea1dce3e8c2764593ce645a1f6200f&amp;type=3#Level" />
     <engine:VisualElement name="Panel" style="flex-grow: 1;">
         <engine:VisualElement name="TopContainer" style="flex-grow: 1; position: absolute; top: 0; min-width: 1920px; min-height: 225px; flex-direction: row;">
-            <engine:VisualElement name="Player3" class="top-player-stats" style="flex-grow: 1; flex-direction: row; width: 346px;">
+            <engine:VisualElement name="Player3" class="top-player-stats" style="flex-grow: 1; flex-direction: row; width: 346px; left: -186px; border-bottom-left-radius: 0;">
                 <engine:VisualElement name="PlayerImage" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/Level/PlayerImage.png?fileID=2800000&amp;guid=f0a86419e6da6794e8b91fb62c42d972&amp;type=3#PlayerImage&quot;); max-width: 125px; max-height: 125px; min-width: 125px; min-height: 125px; align-self: center;" />
                 <engine:VisualElement name="BubbleContainer" style="flex-grow: 1; flex-direction: row; align-self: center;">
                     <engine:VisualElement name="Bubble" class="bubble" style="flex-grow: 0; display: flex;">
@@ -27,7 +27,7 @@
                     </engine:VisualElement>
                 </engine:VisualElement>
             </engine:VisualElement>
-            <engine:VisualElement name="Player4" class="top-player-stats" style="flex-grow: 1; flex-direction: row; width: 346px;">
+            <engine:VisualElement name="Player4" class="top-player-stats" style="flex-grow: 1; flex-direction: row; width: 346px; right: -300px; border-bottom-right-radius: 0;">
                 <engine:VisualElement name="PlayerImage" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/Level/PlayerImage.png?fileID=2800000&amp;guid=f0a86419e6da6794e8b91fb62c42d972&amp;type=3#PlayerImage&quot;); max-width: 125px; max-height: 125px; min-width: 125px; min-height: 125px; align-self: center;" />
                 <engine:VisualElement name="BubbleContainer" style="flex-grow: 1; flex-direction: row; align-self: center;">
                     <engine:VisualElement name="Bubble" class="bubble" style="flex-grow: 0; display: flex;">
@@ -54,7 +54,7 @@
             </engine:VisualElement>
         </engine:VisualElement>
         <engine:VisualElement name="BottomContainer" style="flex-grow: 1; position: absolute; top: 937px; min-width: 1920px; min-height: 225px; flex-direction: row;">
-            <engine:VisualElement name="Player1" class="bottom-player-stats" style="flex-grow: 1; flex-direction: row; width: 346px;">
+            <engine:VisualElement name="Player1" class="bottom-player-stats" style="flex-grow: 1; flex-direction: row; width: 346px; left: -184px; border-top-left-radius: 0;">
                 <engine:VisualElement name="PlayerImage" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/Level/PlayerImage.png?fileID=2800000&amp;guid=f0a86419e6da6794e8b91fb62c42d972&amp;type=3#PlayerImage&quot;); max-width: 125px; max-height: 125px; min-width: 125px; min-height: 125px; align-self: center;" />
                 <engine:VisualElement name="BubbleContainer" style="flex-grow: 1; flex-direction: row; align-self: center;">
                     <engine:VisualElement name="Bubble" class="bubble" style="flex-grow: 0; display: flex;">
@@ -79,7 +79,7 @@
                     </engine:VisualElement>
                 </engine:VisualElement>
             </engine:VisualElement>
-            <engine:VisualElement name="Player2" class="bottom-player-stats" style="flex-grow: 1; flex-direction: row; width: 346px;">
+            <engine:VisualElement name="Player2" class="bottom-player-stats" style="flex-grow: 1; flex-direction: row; width: 346px; right: -301px; border-top-right-radius: 0;">
                 <engine:VisualElement name="PlayerImage" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/Level/PlayerImage.png?fileID=2800000&amp;guid=f0a86419e6da6794e8b91fb62c42d972&amp;type=3#PlayerImage&quot;); max-width: 125px; max-height: 125px; min-width: 125px; min-height: 125px; align-self: center;" />
                 <engine:VisualElement name="BubbleContainer" style="flex-grow: 1; flex-direction: row; align-self: center;">
                     <engine:VisualElement name="Bubble" class="bubble" style="flex-grow: 0; display: flex;">
@@ -105,5 +105,6 @@
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>
+        <engine:Label text="3" name="CountdownLabel" style="position: absolute; left: 47%; top: 42%; font-size: 137px; background-color: rgba(255, 252, 13, 0.55); min-width: 200px; min-height: 200px; -unity-text-align: middle-center; border-top-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; border-bottom-left-radius: 100px; color: rgb(14, 72, 0); right: 47%; bottom: 42%;" />
     </engine:VisualElement>
 </engine:UXML>

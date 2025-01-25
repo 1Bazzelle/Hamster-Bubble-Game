@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
         foreach (var joystick in Input.GetJoystickNames())
         {
-            Debug.Log("Joystick connected: " + joystick);
+            if (joystick == "") Debug.LogWarning("Somthins not connected");
         }
     }
 
@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
         foreach(Vector3 point in contactPoints)
             sum += point;
 
+        // Calculate Average Contact Point
         Vector3 averageContactPoint = sum / contactPoints.Count;
 
         Vector3 contactPointToThis = (transform.position - averageContactPoint).normalized;

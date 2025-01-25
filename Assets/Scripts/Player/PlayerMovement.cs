@@ -6,14 +6,15 @@ public class PlayerMovement
     private PlayerMoveData moveData;
     private int playerIndex;
     private Rigidbody rb;
-    public void Initialize(int index, PlayerMoveData pMoveData, Rigidbody rigidbody)
+    public void Initialize(int joystickIndex, PlayerMoveData pMoveData, Rigidbody rigidbody)
     {
         moveData = pMoveData;
-        playerIndex = index;
+        playerIndex = joystickIndex;
         rb = rigidbody;
     }
     public void Update()
     {
+        if (playerIndex == 0) return;
         KeyCode buttonA     = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button0");
         KeyCode buttonB     = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button1");
         KeyCode buttonX     = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button2");

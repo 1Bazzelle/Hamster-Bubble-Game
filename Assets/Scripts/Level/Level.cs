@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Level : MonoBehaviour
@@ -7,28 +9,64 @@ public class Level : MonoBehaviour
     [SerializeField] private float startPos;
     [SerializeField] private float endPos;
 
-    private bool started;
+    [SerializeField] private List<Transform> playerStartPos;
+    public Sprite levelImage;
 
-    private float startCountdown = 3;
+    private bool started;
+    private bool countdownOver;
+
+    private float initialCooldown;
+    private float startCountdown;
     void OnEnable()
     {
         started = false;
+        countdownOver = false;
+        startCountdown = 4;
+        initialCooldown = 3;
+
+        // Spawn Players at their positions and lock their movement
+        for (int i = 0; i < GameManager.Instance.players.Count; i++)
+        {
+            GameManager.Instance.players[i].transform.position = playerStartPos[i].position;
+            GameManager.Instance.players[i].gameObject.SetActive(true);
+        }
+        GameManager.Instance.LockPlayerMovement();
     }
 
 
     void Update()
     {
+        if (initialCooldown > 0)
+        {
+            initialCooldown -= Time.deltaTime;
+            return;
+        }
+        Debug.Log("Initial Cooldown over");
         if (!started)
         {
-            if (Input.anyKey) StartLevel();
+            if (Input.anyKey)
+            {
+                Debug.Log("any key pressed");
+                StartLevel();
+            }
             return;
         }
 
-        if(startCountdown < 0)
+        if(startCountdown < 0 && !countdownOver)
         {
+            Debug.Log("GOOOOOOOOOOO");
+            countdownOver = true;
+
+            UIManager.Instance.countdown = -1;
+
             GameManager.Instance.UnlockPlayerMovement();
         }
-        startCountdown -= Time.deltaTime;
+        if (startCountdown > 0)
+        {
+            startCountdown -= Time.deltaTime;
+            UIManager.Instance.countdown = startCountdown;
+        }
+       
     }
 
     private void StartLevel()

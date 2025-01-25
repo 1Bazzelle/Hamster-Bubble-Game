@@ -26,4 +26,13 @@ public class LevelCollection : ScriptableObject
     {
         return levels[Random.Range(0, levels.Count)].prefab;
     }
+
+    public GameObject GetLevelIndex(int index)
+    {
+        return levels[index].prefab;
+    }
+    public int GetLevelAmount()
+    {
+        return levels.Count;
+    }
 }

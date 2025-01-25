@@ -1,10 +1,10 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/LevelSelect/LevelSelect.uss?fileID=7433441132597879392&amp;guid=fc307338f2129a64b9d94f12abc5b832&amp;type=3#LevelSelect" />
     <engine:VisualElement name="Panel" style="flex-grow: 1;">
-        <engine:VisualElement name="Container" style="flex-grow: 1; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; padding-right: 60px; padding-left: 60px; padding-bottom: 50px; padding-top: 50px; background-color: rgb(138, 105, 72); margin-top: 100px; margin-bottom: 100px; margin-right: 150px; margin-left: 150px; flex-direction: row; flex-wrap: wrap;">
-            <engine:VisualElement name="RandomLevel" class="level-image">
+        <engine:VisualElement name="LevelContainer" style="flex-grow: 1; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; padding-right: 60px; padding-left: 60px; padding-bottom: 50px; padding-top: 50px; background-color: rgb(138, 105, 72); margin-top: 100px; margin-bottom: 100px; margin-right: 150px; margin-left: 150px; flex-direction: row; flex-wrap: wrap; min-width: 1600px; min-height: 875px;">
+            <engine:Button name="RandomLevel" class="level-image">
                 <engine:Label text="?" name="RandomLevelLabel" style="align-self: center; top: 0; font-size: 135px; color: rgb(255, 255, 255);" />
-            </engine:VisualElement>
+            </engine:Button>
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

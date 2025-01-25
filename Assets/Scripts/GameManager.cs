@@ -10,9 +10,13 @@ public class GameManager : MonoBehaviour
 
     public LevelCollection levelCollection;
 
-    public LevelManager levelManager;
+    private LevelManager levelManager;
 
-    public List<Player> players;
+    public List<Player> players = new();
+
+    [SerializeField] private GameObject playerPrefab;
+
+    [SerializeField] private Camera uiCam;
 
     private void Awake()
     {
@@ -30,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
+        levelManager = new();
+
         ChangeState(new StateMenu());
     }
     private void Update()
@@ -57,5 +63,39 @@ public class GameManager : MonoBehaviour
         {
             players[i].UnlockMovement();
         }
+    }
+
+    public void AddPlayer()
+    {
+        GameObject newPlayer = Instantiate(playerPrefab);
+        newPlayer.SetActive(false);
+        Player playerScript = newPlayer.GetComponent<Player>();
+        playerScript.playerIndex = players.Count+1;
+        players.Add(playerScript);
+    }
+
+    /*
+    public void AddPlayer(int joystickID)
+    {
+        GameObject newPlayer = Instantiate(playerPrefab);
+        newPlayer.SetActive(false);
+        Player playerScript = newPlayer.GetComponent<Player>();
+
+        players.Add((playerScript, joystickID));
+
+        playerScript.playerIndex = players.Count; // Keep player index for UI purposes
+    }
+
+    public int GetJoystickID(int playerIndex)
+    {
+        return players[playerIndex - 1].joystickID; // Return joystick ID for this player
+    }
+    */
+
+    public void LoadLevel(GameObject level)
+    {
+        uiCam.gameObject.SetActive(false);
+        levelManager.LoadLevel(level);
+        ChangeState(new StateLevel());
     }
 }
