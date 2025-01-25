@@ -1,0 +1,87 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PlayerScreen.uss?fileID=7433441132597879392&amp;guid=b2d6ea95c97c961419df9d249d85cec2&amp;type=3#PlayerScreen" />
+    <engine:VisualElement name="Panel" style="flex-grow: 1;">
+        <engine:VisualElement name="Container" style="flex-grow: 1; flex-direction: row; padding-left: 15px; padding-right: 15px;">
+            <engine:VisualElement name="PlayerSlot1" class="player-slot">
+                <engine:VisualElement name="Connected" style="flex-grow: 1; padding-top: 40px; padding-right: 40px; padding-left: 40px; padding-bottom: 40px; display: flex;">
+                    <engine:VisualElement name="HamsterImage" style="flex-grow: 1; max-width: 200px; max-height: 200px; align-self: center; min-width: 200px; min-height: 200px; background-color: rgb(255, 152, 0); margin-bottom: 14px;" />
+                    <engine:VisualElement name="ColorPickContainer" style="flex-grow: 1; flex-direction: row; max-height: 100px; align-self: center; margin-top: 23px;">
+                        <engine:VisualElement name="ColorImage" style="flex-grow: 1; align-self: center; min-width: 100px; min-height: 100px; max-width: 100px; max-height: 100px; background-image: url(&quot;project://database/Assets/UI/ColourPink.png?fileID=2800000&amp;guid=42a63fc7d64412b40bddc4d888d354ae&amp;type=3#ColourPink&quot;);" />
+                        <engine:Label text="B to change Bubble Colour" name="ColourLabel" style="align-self: center; font-size: 32px; color: rgb(255, 255, 255); margin-left: 22px; white-space: normal; width: 227px; -unity-text-align: middle-left;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="ReadyContainer" style="flex-grow: 1; flex-direction: column-reverse;">
+                        <engine:VisualElement name="Ready" class="ready-button-ready" style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px; max-height: 165px; display: flex;">
+                            <engine:Label text="READY" name="ReadyLabel" style="align-self: center; font-size: 67px; color: rgb(255, 255, 255);" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="NotReady" class="ready-button-notready" style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px; max-height: 165px; display: none;">
+                            <engine:Label text="A to Ready Up" name="NotReadyLabel" style="align-self: center; font-size: 40px; color: rgb(255, 255, 255); white-space: nowrap; -unity-text-align: middle-center; top: 15px;" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="NotConnected" class="player-slot-notConnected" style="flex-grow: 1; display: none;">
+                    <engine:Label text="Press Menu To Connect" name="NotConnectedLabel" style="color: rgb(255, 255, 255); font-size: 32px; -unity-text-align: middle-center; align-self: center; top: 300px;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="PlayerSlot2" class="player-slot">
+                <engine:VisualElement name="Connected" style="flex-grow: 1; padding-top: 40px; padding-right: 40px; padding-left: 40px; padding-bottom: 40px; display: flex;">
+                    <engine:VisualElement name="HamsterImage" style="flex-grow: 1; max-width: 200px; max-height: 200px; align-self: center; min-width: 200px; min-height: 200px; background-color: rgb(255, 152, 0); margin-bottom: 14px;" />
+                    <engine:VisualElement name="ColorPickContainer" style="flex-grow: 1; flex-direction: row; max-height: 100px; align-self: center; margin-top: 23px;">
+                        <engine:VisualElement name="ColorImage" style="flex-grow: 1; align-self: center; min-width: 100px; min-height: 100px; max-width: 100px; max-height: 100px; background-image: url(&quot;project://database/Assets/UI/ColourPink.png?fileID=2800000&amp;guid=42a63fc7d64412b40bddc4d888d354ae&amp;type=3#ColourPink&quot;);" />
+                        <engine:Label text="B to change Bubble Colour" name="ColourLabel" style="align-self: center; font-size: 32px; color: rgb(255, 255, 255); margin-left: 22px; white-space: normal; width: 227px; -unity-text-align: middle-left;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="ReadyContainer" style="flex-grow: 1; flex-direction: column-reverse;">
+                        <engine:VisualElement name="Ready" class="ready-button-ready" style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px; max-height: 165px; display: none;">
+                            <engine:Label text="READY" name="ReadyLabel" style="align-self: center; font-size: 67px; color: rgb(255, 255, 255);" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="NotReady" class="ready-button-notready" style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px; max-height: 165px; display: flex;">
+                            <engine:Label text="A to Ready Up" name="NotReadyLabel" style="align-self: center; font-size: 40px; color: rgb(255, 255, 255); white-space: nowrap; -unity-text-align: middle-center; top: 15px;" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="NotConnected" class="player-slot-notConnected" style="flex-grow: 1; display: none;">
+                    <engine:Label text="Press Menu To Connect" name="NotConnectedLabel" style="color: rgb(255, 255, 255); font-size: 32px; -unity-text-align: middle-center; align-self: center; top: 300px;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="PlayerSlot3" class="player-slot">
+                <engine:VisualElement name="Connected" style="flex-grow: 1; padding-top: 40px; padding-right: 40px; padding-left: 40px; padding-bottom: 40px; display: none;">
+                    <engine:VisualElement name="HamsterImage" style="flex-grow: 1; max-width: 200px; max-height: 200px; align-self: center; min-width: 200px; min-height: 200px; background-color: rgb(255, 152, 0); margin-bottom: 14px;" />
+                    <engine:VisualElement name="ColorPickContainer" style="flex-grow: 1; flex-direction: row; max-height: 100px; align-self: center; margin-top: 23px;">
+                        <engine:VisualElement name="ColorImage" style="flex-grow: 1; align-self: center; min-width: 100px; min-height: 100px; max-width: 100px; max-height: 100px; background-image: url(&quot;project://database/Assets/UI/ColourPink.png?fileID=2800000&amp;guid=42a63fc7d64412b40bddc4d888d354ae&amp;type=3#ColourPink&quot;);" />
+                        <engine:Label text="B to change Bubble Colour" name="ColourLabel" style="align-self: center; font-size: 32px; color: rgb(255, 255, 255); margin-left: 22px; white-space: normal; width: 227px; -unity-text-align: middle-left;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="ReadyContainer" style="flex-grow: 1; flex-direction: column-reverse;">
+                        <engine:VisualElement name="Ready" class="ready-button-ready" style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px; max-height: 165px; display: flex;">
+                            <engine:Label text="READY" name="ReadyLabel" style="align-self: center; font-size: 67px; color: rgb(255, 255, 255);" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="NotReady" class="ready-button-notready" style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px; max-height: 165px; display: none;">
+                            <engine:Label text="A to Ready Up" name="NotReadyLabel" style="align-self: center; font-size: 40px; color: rgb(255, 255, 255); white-space: nowrap; -unity-text-align: middle-center; top: 15px;" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="NotConnected" class="player-slot-notConnected" style="flex-grow: 1; display: flex;">
+                    <engine:Label text="Press Menu To Connect" name="NotConnectedLabel" style="color: rgb(255, 255, 255); font-size: 32px; -unity-text-align: middle-center; align-self: center; top: 300px;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="PlayerSlot4" class="player-slot">
+                <engine:VisualElement name="Connected" style="flex-grow: 1; padding-top: 40px; padding-right: 40px; padding-left: 40px; padding-bottom: 40px; display: none;">
+                    <engine:VisualElement name="HamsterImage" style="flex-grow: 1; max-width: 200px; max-height: 200px; align-self: center; min-width: 200px; min-height: 200px; background-color: rgb(255, 152, 0); margin-bottom: 14px;" />
+                    <engine:VisualElement name="ColorPickContainer" style="flex-grow: 1; flex-direction: row; max-height: 100px; align-self: center; margin-top: 23px;">
+                        <engine:VisualElement name="ColorImage" style="flex-grow: 1; align-self: center; min-width: 100px; min-height: 100px; max-width: 100px; max-height: 100px; background-image: url(&quot;project://database/Assets/UI/ColourPink.png?fileID=2800000&amp;guid=42a63fc7d64412b40bddc4d888d354ae&amp;type=3#ColourPink&quot;);" />
+                        <engine:Label text="B to change Bubble Colour" name="ColourLabel" style="align-self: center; font-size: 32px; color: rgb(255, 255, 255); margin-left: 22px; white-space: normal; width: 227px; -unity-text-align: middle-left;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="ReadyContainer" style="flex-grow: 1; flex-direction: column-reverse;">
+                        <engine:VisualElement name="Ready" class="ready-button-ready" style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px; max-height: 165px; display: flex;">
+                            <engine:Label text="READY" name="ReadyLabel" style="align-self: center; font-size: 67px; color: rgb(255, 255, 255);" />
+                        </engine:VisualElement>
+                        <engine:VisualElement name="NotReady" class="ready-button-notready" style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-left: 20px; padding-bottom: 20px; max-height: 165px; display: none;">
+                            <engine:Label text="A to Ready Up" name="NotReadyLabel" style="align-self: center; font-size: 40px; color: rgb(255, 255, 255); white-space: nowrap; -unity-text-align: middle-center; top: 15px;" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="NotConnected" class="player-slot-notConnected" style="flex-grow: 1; display: flex;">
+                    <engine:Label text="Press Menu To Connect" name="NotConnectedLabel" style="color: rgb(255, 255, 255); font-size: 32px; -unity-text-align: middle-center; align-self: center; top: 300px;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

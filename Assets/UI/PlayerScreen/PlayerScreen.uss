@@ -1,0 +1,52 @@
+.player-slot {
+    background-color: rgb(118, 91, 58);
+    margin-left: 15px;
+    margin-top: 71px;
+    margin-bottom: 84px;
+    margin-right: 15px;
+    flex-grow: 1;
+    max-height: 675px;
+    min-height: 675px;
+    align-self: center;
+    border-top-width: 20px;
+    border-right-width: 20px;
+    border-bottom-width: 20px;
+    border-left-width: 20px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    max-width: 450px;
+}
+
+.ready-button-ready {
+    background-color: rgb(77, 232, 47);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.ready-button-notready {
+    background-color: rgb(43, 84, 44);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.player-slot-notConnected {
+    background-color: rgb(61, 53, 44);
+}
+
+.player-slot-notConnected {
+    background-color: rgb(61, 53, 44);
+}

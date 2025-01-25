@@ -1,0 +1,62 @@
+.bubble-image {
+    background-image: url("project://database/Assets/UI/Level/Bubble.png?fileID=2800000&guid=d14f9f3cca6b6c24ebd2ad3a91433e45&type=3#Bubble");
+    max-width: 75px;
+    max-height: 75px;
+    min-width: 75px;
+    min-height: 75px;
+    align-self: flex-start;
+}
+
+.bottom-player-stats {
+    padding-left: 25px;
+    padding-top: 36px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    background-color: rgb(151, 111, 65);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    max-width: 513px;
+    margin-left: 94px;
+    max-height: 144px;
+}
+
+.bubble-active {
+    margin-right: -15px;
+}
+
+.bubble-inactive {
+    margin-right: -15px;
+    background-image: url("project://database/Assets/UI/Level/DottedBubble.png?fileID=2800000&guid=5577b7af740bb644aba1fca9954e8c88&type=3#DottedBubble");
+}
+
+.bottom-player-stats {
+    padding-left: 25px;
+    padding-top: 36px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    background-color: rgb(151, 111, 65);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    max-width: 513px;
+    margin-left: 185px;
+    max-height: 144px;
+    margin-right: 300px;
+}
+
+.top-player-stats {
+    padding-left: 25px;
+    padding-top: 36px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    background-color: rgb(151, 111, 65);
+    max-width: 513px;
+    margin-left: 185px;
+    max-height: 144px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-right: 300px;
+}
+
+.bubble-inactive {
+    margin-right: -15px;
+}

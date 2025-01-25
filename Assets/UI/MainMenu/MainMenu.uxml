@@ -1,0 +1,10 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu.uss?fileID=7433441132597879392&amp;guid=1c8ef44b0f18e864aaa7b8aead0e6e33&amp;type=3#MainMenu" />
+    <engine:VisualElement name="Panel" style="flex-grow: 1;">
+        <engine:VisualElement name="Container" style="flex-grow: 1; max-width: 750px; margin-top: 25px; margin-left: 25px;">
+            <engine:VisualElement name="Logo" style="flex-grow: 1; min-width: 750px; max-width: 750px; max-height: 400px; min-height: 400px; margin-bottom: 45px; background-image: url(&quot;project://database/Assets/UI/Logo.png?fileID=2800000&amp;guid=caf3aa764c201884dad2fa35ebffe213&amp;type=3#Logo&quot;);" />
+            <engine:Button text="START" name="StartButton" style="align-self: center; min-width: 500px; min-height: 150px; margin-bottom: 15px;" />
+            <engine:Button text="QUIT" name="QuitButton" style="align-self: center; min-width: 500px; min-height: 150px; margin-bottom: 15px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
