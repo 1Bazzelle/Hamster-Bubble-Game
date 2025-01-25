@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private PlayerMoveData moveData;
     private PlayerMovement movement;
+    private bool movementLocked;
+
     private Rigidbody rb;
 
     #endregion
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movement.Update();
+        if(!movementLocked) movement.Update();
 
         foreach (var joystick in Input.GetJoystickNames())
         {
@@ -61,5 +63,18 @@ public class Player : MonoBehaviour
         Vector3 contactPointToThis = (transform.position - averageContactPoint).normalized;
 
         rb.linearVelocity += contactPointToThis * moveData.bounceFactor;
+    }
+
+    public void LockMovement()
+    {
+        rb.linearVelocity = Vector3.zero;
+
+        movementLocked = true;
+    }
+    public void UnlockMovement()
+    {
+        rb.linearVelocity = Vector3.zero;
+
+        movementLocked = false;
     }
 }
