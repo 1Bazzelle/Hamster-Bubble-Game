@@ -40,8 +40,11 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    public bool hasFinished;
+
     [HideInInspector]
     public int dashCharges;
+    private List<GameObject> debugSpheres;
 
     [SerializeField] private Animator animator;
 
@@ -64,14 +67,22 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
+        debugSpheres = new();
+
         movement = new();
         movement.Initialize(playerIndex, moveData, rb, animator);
 
         dashCharges = moveData.maxDashCharges;
 
+        UpdateDashDebug();
+
         animator.speed = 0;
 
         dashParticles.Stop();
+
+        rb.angularVelocity = Vector3.zero;
+
+        hasFinished = false;
     }
     private void Update()
     {
@@ -118,14 +129,11 @@ public class Player : MonoBehaviour
 
     public void LockMovement()
     {
-        rb.linearVelocity = Vector3.zero;
-
+        animator.speed = 0;
         movementLocked = true;
     }
     public void UnlockMovement()
     {
-        rb.linearVelocity = Vector3.zero;
-
         movementLocked = false;
     }
 
@@ -169,8 +177,37 @@ public class Player : MonoBehaviour
         if(!dashParticles.isPlaying) dashParticles.Play();
     }
 
+    public void AddCharge()
+    {
+        dashCharges++;
+        UpdateDashDebug();
+    }
+    public void UpdateDashDebug()
+    {
+        Debug.Log("Charges: " + dashCharges);
+        foreach(GameObject sphere in debugSpheres)
+        {
+            Destroy(sphere);
+        }
+        debugSpheres.Clear();
+        for (int i = 0; i < dashCharges; i++)
+        {
+            debugSpheres.Add(DisplayDebugSphere(transform, new Vector3(-0.5f, 0, 0) + new Vector3(0.5f * i, 1.5f, 0), Color.blue , 0.3f));
+        }
+    }
     public PlayerMoveData GetMoveData()
     {
         return moveData;
+    }
+
+    public GameObject DisplayDebugSphere(Transform transform, Vector3 offset, Color color, float scale)
+    {
+        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        sphere.GetComponent<Renderer>().material.color = color;
+        sphere.transform.localScale = new Vector3(scale, scale, scale);
+        sphere.transform.position = transform.position + offset;
+        sphere.transform.SetParent(transform, true);
+        Destroy(sphere.GetComponent<SphereCollider>());
+        return sphere;
     }
 }

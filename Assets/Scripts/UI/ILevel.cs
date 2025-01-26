@@ -103,6 +103,8 @@ public class ILevel : IScreen
         playerCount = GameManager.Instance.players.Count;
 
         UpdatePlayerProfiles();
+
+        root.Q<Label>("WinnerLabel").style.display = DisplayStyle.None;
     }
 
     public void Update()
@@ -123,10 +125,16 @@ public class ILevel : IScreen
             root.Q<Label>("CountdownLabel").style.display = DisplayStyle.None;
         }
 
-        Debug.Log("Got here");
+        // CODE GETS HERE
         for (int i = 0; i < playerCount; i++)
         {
             if (players[i].active) players[i].UpdateBubbleCount();
+        }
+
+        if(GameManager.Instance.game.hasWinner)
+        {
+            root.Q<Label>("WinnerLabel").style.display = DisplayStyle.Flex;
+            root.Q<Label>("WinnerLabel").text = "THE WINNER IS PLAYER " + GameManager.Instance.game.winner.playerIndex;
         }
     }
 

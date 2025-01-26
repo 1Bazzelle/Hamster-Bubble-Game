@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Material> playerMaterials;
 
     [SerializeField] private Camera uiCam;
+
+    public (bool hasWinner, Player winner) game;
 
     private void Awake()
     {
@@ -58,6 +61,17 @@ public class GameManager : MonoBehaviour
             players[i].player.LockMovement();
         }
     }
+    public void ToggleSinglePlayerMovement(Player player, bool state)
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].player == player)
+            {
+                if (!state) player.LockMovement();
+                if (state) player.UnlockMovement();
+            }
+        }
+    }
     public void UnlockPlayerMovement()
     {
         for (int i = 0; i < players.Count; i++)
@@ -66,6 +80,51 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnPlayerFinish(Player player)
+    {
+        player.hasFinished = true;
+        ToggleSinglePlayerMovement(player, false);
+
+        bool first = true;
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].player == player) continue;
+
+            if (players[i].player.hasFinished == true)
+            {
+                first = false;
+                break;
+            }
+        }
+
+        if (first)
+        {
+            game.winner = player;
+            game.hasWinner = true;
+        }
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (!players[i].player.hasFinished)
+                return;
+        }
+
+        StartCoroutine(QueueGameFinish());
+    }
+
+    private void ResetPlayers()
+    {
+        foreach ((Player player, int joystickID) playerData in players)
+        {
+            if (playerData.player != null)
+            {
+                Destroy(playerData.player.gameObject);
+            }
+        }
+
+        players.Clear();
+    }
     public void AddPlayer(int joystickID)
     {
         GameObject newPlayer = Instantiate(playerPrefab);
@@ -115,5 +174,16 @@ public class GameManager : MonoBehaviour
         uiCam.gameObject.SetActive(false);
         levelManager.LoadLevel(level);
         ChangeState(new StateLevel());
+    }
+
+
+    private IEnumerator QueueGameFinish()
+    {
+        yield return new WaitForSeconds(3f);
+        uiCam.gameObject.SetActive(true);
+        levelManager.UnloadLevel();
+        ResetPlayers();
+        game.hasWinner = false;
+        ChangeState(new StateMenu());
     }
 }

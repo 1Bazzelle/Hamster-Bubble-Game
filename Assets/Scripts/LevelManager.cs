@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class LevelManager
@@ -9,7 +10,10 @@ public class LevelManager
 
         curLevel = levelObject.GetComponent<Level>();
     }
-
+    public void UnloadLevel()
+    {
+        GameObject.Destroy(curLevel.gameObject);
+    }
     public void Update()
     {
         if (curLevel == null) return;

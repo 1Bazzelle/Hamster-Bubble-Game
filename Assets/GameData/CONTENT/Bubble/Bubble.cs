@@ -29,7 +29,7 @@ public class Bubble : MonoBehaviour
             {
                 if (player.dashCharges < player.GetMoveData().maxDashCharges)
                 {
-                    player.dashCharges++;
+                    player.AddCharge();
                 }
                 PopSelf();
             }

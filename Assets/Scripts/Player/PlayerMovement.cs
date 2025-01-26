@@ -88,6 +88,8 @@ public class PlayerMovement
         if (Input.GetKey(buttonA) && !dashButtonPressed && !dashing && player.dashCharges > 0 && horizontalInput != 0 && verticalInput != 0)
         {
             player.dashCharges--;
+            player.UpdateDashDebug();
+
 
             dashDirec = new Vector3(horizontalInput, verticalInput, 0).normalized;
 
