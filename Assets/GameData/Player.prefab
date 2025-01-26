@@ -5230,6 +5230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
+  debug: 1
   moveData:
     verticalAccel: 0.05
     horizontalAccel: 0.05
@@ -5242,6 +5243,7 @@ MonoBehaviour:
     bounceFactor: 5
     appliedGravity: 0
     animationSpeed: 3
+  hasFinished: 0
   dashCharges: 0
   animator: {fileID: 8493928896190182717}
   hampter: {fileID: 6263965403057489066}
