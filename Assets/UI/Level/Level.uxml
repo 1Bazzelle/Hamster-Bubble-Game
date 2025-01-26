@@ -74,5 +74,6 @@
             </engine:VisualElement>
         </engine:VisualElement>
         <engine:Label text="3" name="CountdownLabel" style="position: absolute; left: 46%; top: 42%; font-size: 137px; background-color: rgba(255, 252, 13, 0.55); min-width: 200px; min-height: 200px; -unity-text-align: middle-center; border-top-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; border-bottom-left-radius: 100px; color: rgb(14, 72, 0); right: 47%; bottom: 42%;" />
+        <engine:Label text="WE HAVE A WINNER" name="WinnerLabel" style="position: absolute; font-size: 96px; background-color: rgba(4, 61, 0, 0.32); min-width: 200px; min-height: 200px; -unity-text-align: middle-center; border-top-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; border-bottom-left-radius: 100px; color: rgb(255, 255, 255); display: flex; top: 144px; align-self: center; padding-right: 60px; padding-left: 60px;" />
     </engine:VisualElement>
 </engine:UXML>
