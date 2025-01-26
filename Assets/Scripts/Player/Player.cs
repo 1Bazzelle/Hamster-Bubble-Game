@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
 {
     public int playerIndex;
 
+    public bool debug;
+
     #region Movement
 
     [SerializeField] private PlayerMoveData moveData;
@@ -87,7 +89,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Boioioing();
-        Debug.Log(dashCharges);
+        //Debug.Log(dashCharges);
     }
     private void FixedUpdate()
     {
@@ -184,6 +186,7 @@ public class Player : MonoBehaviour
     }
     public void UpdateDashDebug()
     {
+        return;
         Debug.Log("Charges: " + dashCharges);
         foreach(GameObject sphere in debugSpheres)
         {
