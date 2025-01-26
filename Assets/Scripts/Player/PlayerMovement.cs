@@ -3,21 +3,34 @@ using UnityEngine;
 
 public class PlayerMovement
 {
+    private Player player;
     private PlayerMoveData moveData;
     private int playerIndex;
     private Rigidbody rb;
     private Animator animator;
+
+    private Vector3 dashDirec;
+    public bool dashing { get; set; }
+    private float dashTimer;
+    private bool dashButtonPressed;
+
     public void Initialize(int joystickIndex, PlayerMoveData pMoveData, Rigidbody rigidbody, Animator animation)
     {
         moveData = pMoveData;
         playerIndex = joystickIndex;
         rb = rigidbody;
         animator = animation;
+
+        dashing = false;
+        dashTimer = 0;
+
+        player = GameManager.Instance.GetPlayerByJoystick(playerIndex);
     }
     public void Update()
     {
         if (playerIndex == 0) return;
 
+        #region Buttons
         KeyCode buttonA     = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button0");
         KeyCode buttonB     = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button1");
         KeyCode buttonX     = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button2");
@@ -29,7 +42,9 @@ public class PlayerMovement
         KeyCode buttonL3    = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button8");
         KeyCode buttonR3    = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button9");
         KeyCode buttonGuide = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button10");
+        #endregion
 
+        #region Regular Movement
         string leftStickHorizontal = $"Horizontal{playerIndex}";
         string leftStickVertical = $"Vertical{playerIndex}";
 
@@ -54,11 +69,50 @@ public class PlayerMovement
         {
             animator.speed = 0;
         }
+        #endregion
 
+        #region Gravity
         if (moveData.appliedGravity > 0)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y - moveData.appliedGravity, rb.linearVelocity.z);
         }
+        #endregion
+
+        #region Dash
+
+        if (!dashing && player.dashCharges > 0 && horizontalInput != 0 && verticalInput != 0)
+        {
+            //Debug.Log("CAN DASH");
+        }
+
+        if (Input.GetKey(buttonA) && !dashButtonPressed && !dashing && player.dashCharges > 0 && horizontalInput != 0 && verticalInput != 0)
+        {
+            player.dashCharges--;
+
+            dashDirec = new Vector3(horizontalInput, verticalInput, 0).normalized;
+
+            dashTimer = moveData.dashDuration;
+            dashing = true;
+        }
+        if(!Input.GetKey(buttonA) && dashButtonPressed)
+        {
+            dashButtonPressed = false;
+        }
+
+        if (dashing)
+        {
+            if (dashTimer > 0)
+            {
+                rb.linearVelocity += moveData.dashVelPerSec * dashDirec;
+                dashTimer -= Time.deltaTime;
+            }
+            else if (dashTimer < 0)
+            {
+                dashing = false;
+            }
+        }
+        player.UpdateDashParticles(dashing, dashDirec);
+        #endregion
 
         #region Drag
         if (rb.linearVelocity.x > 0)
@@ -79,5 +133,15 @@ public class PlayerMovement
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, Mathf.Min(0, rb.linearVelocity.y + moveData.drag * Time.deltaTime), rb.linearVelocity.z);
         }
         #endregion
+    }
+    public void OnCollision(Vector3 normal)
+    {
+        normal.Normalize();
+
+        if (dashing)
+        {
+            Vector3 mirroredVector = dashDirec - 2 * Vector3.Dot(dashDirec, normal) * normal;
+            dashDirec = mirroredVector;
+        }
     }
 }

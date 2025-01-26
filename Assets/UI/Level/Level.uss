@@ -7,19 +7,6 @@
     align-self: flex-start;
 }
 
-.bottom-player-stats {
-    padding-left: 25px;
-    padding-top: 36px;
-    padding-bottom: 25px;
-    padding-right: 25px;
-    background-color: rgb(151, 111, 65);
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    max-width: 513px;
-    margin-left: 94px;
-    max-height: 144px;
-}
-
 .bubble-active {
     margin-right: -15px;
 }
@@ -30,33 +17,25 @@
 }
 
 .bottom-player-stats {
-    padding-left: 25px;
-    padding-top: 36px;
-    padding-bottom: 25px;
-    padding-right: 25px;
     background-color: rgb(151, 111, 65);
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    max-width: 513px;
-    margin-left: 185px;
+    max-width: 370px;
     max-height: 144px;
-    margin-right: 300px;
 }
 
 .top-player-stats {
-    padding-left: 25px;
-    padding-top: 36px;
-    padding-bottom: 25px;
-    padding-right: 25px;
     background-color: rgb(151, 111, 65);
-    max-width: 513px;
-    margin-left: 185px;
+    max-width: 370px;
     max-height: 144px;
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
-    margin-right: 300px;
 }
 
 .bubble-inactive {
     margin-right: -15px;
+}
+
+.bubble {
+    margin-right: -16px;
 }

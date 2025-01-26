@@ -5,10 +5,18 @@ using UnityEngine;
 [System.Serializable]
 public struct PlayerMoveData
 {
+    [Header("Regular Movement")]
     public float verticalAccel;
     public float horizontalAccel;
     public float maxVerticalVel;
     public float maxHorizontalVel;
+
+    [Header("Dash")]
+    public int maxDashCharges;
+    public float dashVelPerSec;
+    public float dashDuration;
+
+    [Header("Other Stuff")]
 
     public float drag;
 
@@ -32,6 +40,9 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    [HideInInspector]
+    public int dashCharges;
+
     [SerializeField] private Animator animator;
 
     [Header("Hampter")]
@@ -45,7 +56,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float boioioingSpeed;
     [SerializeField] private float boioioingFalloff;
     private float boioioingTimeOffset;
-    
+
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem dashParticles;
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
@@ -53,11 +67,16 @@ public class Player : MonoBehaviour
         movement = new();
         movement.Initialize(playerIndex, moveData, rb, animator);
 
+        dashCharges = moveData.maxDashCharges;
+
         animator.speed = 0;
+
+        dashParticles.Stop();
     }
     private void Update()
     {
         Boioioing();
+        Debug.Log(dashCharges);
     }
     private void FixedUpdate()
     {
@@ -73,8 +92,14 @@ public class Player : MonoBehaviour
     {
         List<Vector3> contactPoints = new();
 
-        foreach(ContactPoint contact in collision.contacts)
+        foreach (ContactPoint contact in collision.contacts)
+        {
             contactPoints.Add(contact.point);
+        }
+
+        // Let the movement script know
+        Vector3 normal = collision.contacts[0].normal;
+        movement.OnCollision(normal);
 
         Vector3 sum = Vector3.zero;
 
@@ -129,5 +154,23 @@ public class Player : MonoBehaviour
     public Material GetMaterial()
     {
         return material;
+    }
+
+    public void UpdateDashParticles(bool dashing, Vector3 dashDirec)
+    {
+        if (!dashing)
+        {
+            dashParticles.Stop();
+            return;
+        }
+
+        dashParticles.transform.LookAt(transform.position - dashDirec);
+
+        if(!dashParticles.isPlaying) dashParticles.Play();
+    }
+
+    public PlayerMoveData GetMoveData()
+    {
+        return moveData;
     }
 }
