@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
     }
     public void UpdateDashDebug()
     {
-        if (!debug) return;
+        return;
         Debug.Log("Charges: " + dashCharges);
         foreach(GameObject sphere in debugSpheres)
         {
