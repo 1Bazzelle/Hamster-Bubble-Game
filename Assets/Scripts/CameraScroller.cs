@@ -26,11 +26,11 @@ public class CameraScroller : MonoBehaviour
     {
         if (GameManager.Instance.players.Count == 0) return null;
 
-        Player first = GameManager.Instance.players[0];
+        Player first = GameManager.Instance.players[0].player;
 
         for(int i = 0; i < GameManager.Instance.players.Count; i++)
         {
-            if (GameManager.Instance.players[i].transform.position.x > first.transform.position.x) first = GameManager.Instance.players[i];
+            if (GameManager.Instance.players[i].player.transform.position.x > first.transform.position.x) first = GameManager.Instance.players[i].player;
         }
         return first;
     }
@@ -41,7 +41,7 @@ public class CameraScroller : MonoBehaviour
         float allPos = 0;
         for (int i = 0; i < GameManager.Instance.players.Count; i++)
         {
-            allPos += GameManager.Instance.players[i].transform.position.x;
+            allPos += GameManager.Instance.players[i].player.transform.position.x;
         }
         return allPos / GameManager.Instance.players.Count;
     }

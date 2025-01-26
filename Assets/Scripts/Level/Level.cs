@@ -21,14 +21,14 @@ public class Level : MonoBehaviour
     {
         started = false;
         countdownOver = false;
-        startCountdown = 4;
-        initialCooldown = 3;
+        startCountdown = 0.5f;
+        initialCooldown = 0.5f;
 
         // Spawn Players at their positions and lock their movement
         for (int i = 0; i < GameManager.Instance.players.Count; i++)
         {
-            GameManager.Instance.players[i].transform.position = playerStartPos[i].position;
-            GameManager.Instance.players[i].gameObject.SetActive(true);
+            GameManager.Instance.players[i].player.transform.position = playerStartPos[i].position;
+            GameManager.Instance.players[i].player.gameObject.SetActive(true);
         }
         GameManager.Instance.LockPlayerMovement();
     }

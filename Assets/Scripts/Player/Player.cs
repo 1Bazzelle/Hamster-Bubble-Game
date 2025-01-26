@@ -13,6 +13,10 @@ public struct PlayerMoveData
     public float drag;
 
     public float bounceFactor;
+
+    public float appliedGravity;
+
+    public float animationSpeed;
 }
 public class Player : MonoBehaviour
 {
@@ -28,17 +32,32 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    [SerializeField] private Animator animator;
+
+    [Header("Boioioing")]
+    [SerializeField] private GameObject bubble;
+    [SerializeField] private float initBoioioingFactor;
+    private float boioioingFactor;
+    [SerializeField] private float boioioingSpeed;
+    [SerializeField] private float boioioingFalloff;
+    private float boioioingTimeOffset;
+    
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
 
         movement = new();
-        movement.Initialize(playerIndex, moveData, rb);
-    }
+        movement.Initialize(playerIndex, moveData, rb, animator);
 
+        animator.speed = 0;
+    }
+    private void Update()
+    {
+        Boioioing();
+    }
     private void FixedUpdate()
     {
-        if(!movementLocked) movement.Update();
+        if (!movementLocked) movement.Update();
 
         foreach (var joystick in Input.GetJoystickNames())
         {
@@ -62,8 +81,10 @@ public class Player : MonoBehaviour
         Vector3 averageContactPoint = sum / contactPoints.Count;
 
         Vector3 contactPointToThis = (transform.position - averageContactPoint).normalized;
-
         rb.linearVelocity += contactPointToThis * moveData.bounceFactor;
+
+        boioioingFactor = initBoioioingFactor;
+        boioioingTimeOffset = Mathf.PI / 2; // Start sine wave at peak (+1)
     }
 
     public void LockMovement()
@@ -77,5 +98,22 @@ public class Player : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
 
         movementLocked = false;
+    }
+
+    private void Boioioing()
+    {
+        if (boioioingFactor <= 0)
+        {
+            boioioingFactor = 0;
+            bubble.transform.localScale = Vector3.one * 2; // Reset to default size
+            return;
+        }
+
+        // Oscillate the bubble's size around its default scale (2, 2, 2)
+        float scaleOffset = Mathf.Sin(Time.time * boioioingSpeed + boioioingTimeOffset) * boioioingFactor;
+        bubble.transform.localScale = Vector3.one * (2 + scaleOffset);
+
+        // Gradually decrease the boioioing effect
+        boioioingFactor -= Time.deltaTime * boioioingFalloff;
     }
 }

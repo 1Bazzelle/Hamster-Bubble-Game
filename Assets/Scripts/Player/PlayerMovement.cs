@@ -6,15 +6,18 @@ public class PlayerMovement
     private PlayerMoveData moveData;
     private int playerIndex;
     private Rigidbody rb;
-    public void Initialize(int joystickIndex, PlayerMoveData pMoveData, Rigidbody rigidbody)
+    private Animator animator;
+    public void Initialize(int joystickIndex, PlayerMoveData pMoveData, Rigidbody rigidbody, Animator animation)
     {
         moveData = pMoveData;
         playerIndex = joystickIndex;
         rb = rigidbody;
+        animator = animation;
     }
     public void Update()
     {
         if (playerIndex == 0) return;
+
         KeyCode buttonA     = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button0");
         KeyCode buttonB     = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button1");
         KeyCode buttonX     = (KeyCode)System.Enum.Parse(typeof(KeyCode), $"Joystick{playerIndex}Button2");
@@ -37,14 +40,27 @@ public class PlayerMovement
             (horizontalInput <= 0 && rb.linearVelocity.x > -moveData.maxHorizontalVel))
         {
             rb.linearVelocity += new Vector3( horizontalInput * moveData.horizontalAccel, 0, 0 );
+            if (animator.speed == 0) animator.speed = moveData.animationSpeed;
         }
 
         if ((verticalInput >= 0 && rb.linearVelocity.y < moveData.maxVerticalVel) || 
             (verticalInput <= 0 && rb.linearVelocity.y > -moveData.maxVerticalVel))
         {
             rb.linearVelocity += new Vector3( 0, verticalInput * moveData.verticalAccel, 0 );
+            if (animator.speed == 0) animator.speed = moveData.animationSpeed;
         }
 
+        if (horizontalInput == 0 && verticalInput == 0)
+        {
+            animator.speed = 0;
+        }
+
+        if (moveData.appliedGravity > 0)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y - moveData.appliedGravity, rb.linearVelocity.z);
+        }
+
+        #region Drag
         if (rb.linearVelocity.x > 0)
         {
             rb.linearVelocity = new Vector3(Mathf.Max(0, rb.linearVelocity.x - moveData.drag * Time.deltaTime), rb.linearVelocity.y, rb.linearVelocity.z);
@@ -62,5 +78,6 @@ public class PlayerMovement
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, Mathf.Min(0, rb.linearVelocity.y + moveData.drag * Time.deltaTime), rb.linearVelocity.z);
         }
+        #endregion
     }
 }

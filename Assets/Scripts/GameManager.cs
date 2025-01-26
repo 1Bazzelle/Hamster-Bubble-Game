@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     private LevelManager levelManager;
 
-    public List<Player> players = new();
+    public List<(Player player, int joystickID)> players = new();
 
     [SerializeField] private GameObject playerPrefab;
 
@@ -54,27 +54,17 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < players.Count; i++)
         {
-            players[i].LockMovement();
+            players[i].player.LockMovement();
         }
     }
     public void UnlockPlayerMovement()
     {
         for (int i = 0; i < players.Count; i++)
         {
-            players[i].UnlockMovement();
+            players[i].player.UnlockMovement();
         }
     }
 
-    public void AddPlayer()
-    {
-        GameObject newPlayer = Instantiate(playerPrefab);
-        newPlayer.SetActive(false);
-        Player playerScript = newPlayer.GetComponent<Player>();
-        playerScript.playerIndex = players.Count+1;
-        players.Add(playerScript);
-    }
-
-    /*
     public void AddPlayer(int joystickID)
     {
         GameObject newPlayer = Instantiate(playerPrefab);
@@ -83,14 +73,13 @@ public class GameManager : MonoBehaviour
 
         players.Add((playerScript, joystickID));
 
-        playerScript.playerIndex = players.Count; // Keep player index for UI purposes
+        playerScript.playerIndex = joystickID; // Keep player index for UI purposes
     }
 
     public int GetJoystickID(int playerIndex)
     {
         return players[playerIndex - 1].joystickID; // Return joystick ID for this player
     }
-    */
 
     public void LoadLevel(GameObject level)
     {

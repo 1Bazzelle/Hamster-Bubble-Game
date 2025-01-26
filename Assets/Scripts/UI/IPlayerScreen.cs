@@ -84,7 +84,7 @@ public class IPlayerScreen : IScreen
             }
         }
 
-        GameManager.Instance.AddPlayer();
+        GameManager.Instance.AddPlayer(joystickID);
     }
 
     private void UpdateReadyButton()
