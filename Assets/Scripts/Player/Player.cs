@@ -34,6 +34,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    [Header("Hampter")]
+    [SerializeField] private GameObject hampter;
+    private Material material;
+
     [Header("Boioioing")]
     [SerializeField] private GameObject bubble;
     [SerializeField] private float initBoioioingFactor;
@@ -115,5 +119,15 @@ public class Player : MonoBehaviour
 
         // Gradually decrease the boioioing effect
         boioioingFactor -= Time.deltaTime * boioioingFalloff;
+    }
+
+    public void ChangeHampterMaterial(Material hampterMaterial)
+    {
+        material = hampterMaterial;
+        hampter.GetComponent<Renderer>().material = hampterMaterial;
+    }
+    public Material GetMaterial()
+    {
+        return material;
     }
 }

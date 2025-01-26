@@ -78,8 +78,6 @@ public class IPlayerScreen : IScreen
                 playerSlots[i] = temp;
 
                 assignedJoysticks.Add(joystickID);
-
-                Debug.Log($"Joystick {joystickID} assigned to Player Slot {i + 1}");
                 break;
             }
         }

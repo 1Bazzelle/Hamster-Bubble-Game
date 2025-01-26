@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public List<(Player player, int joystickID)> players = new();
 
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private List<Material> playerMaterials;
 
     [SerializeField] private Camera uiCam;
 
@@ -71,14 +72,33 @@ public class GameManager : MonoBehaviour
         newPlayer.SetActive(false);
         Player playerScript = newPlayer.GetComponent<Player>();
 
+
+        List<Material> availableMaterials = new List<Material>(playerMaterials);
+
+        foreach ((Player player, int joystickID) player in players)
+        {
+            Material usedMaterial = player.player.GetMaterial();
+            if (availableMaterials.Contains(usedMaterial))
+            {
+                availableMaterials.Remove(usedMaterial);
+            }
+        }
+
+        if (availableMaterials.Count > 0)
+        {
+            Material material = availableMaterials[Random.Range(0, availableMaterials.Count)];
+            playerScript.ChangeHampterMaterial(material);
+        }
+        else Debug.Log("Not enough materials");
+
         players.Add((playerScript, joystickID));
 
-        playerScript.playerIndex = joystickID; // Keep player index for UI purposes
+        playerScript.playerIndex = joystickID;
     }
 
     public int GetJoystickID(int playerIndex)
     {
-        return players[playerIndex - 1].joystickID; // Return joystick ID for this player
+        return players[playerIndex - 1].joystickID;
     }
 
     public void LoadLevel(GameObject level)
