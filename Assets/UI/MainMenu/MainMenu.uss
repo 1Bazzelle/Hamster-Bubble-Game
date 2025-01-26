@@ -1,42 +1,17 @@
 .unity-button {
-    background-color: rgb(120, 99, 66);
     color: rgb(255, 255, 255);
     font-size: 53px;
-    border-top-width: 15px;
-    border-right-width: 15px;
-    border-bottom-width: 15px;
-    border-left-width: 15px;
-    border-left-color: rgb(0, 0, 0);
-    border-right-color: rgb(0, 0, 0);
-    border-top-color: rgb(0, 0, 0);
-    border-bottom-color: rgb(0, 0, 0);
+    background-image: url("project://database/Assets/UI/MainMenu/Button.png?fileID=2800000&guid=2f423057d869400458685cda265b7232&type=3#Button");
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .unity-button:hover {
-    background-color: rgb(180, 152, 107);
     color: rgb(255, 255, 255);
     font-size: 53px;
-    border-top-width: 15px;
-    border-right-width: 15px;
-    border-bottom-width: 15px;
-    border-left-width: 15px;
-    border-left-color: rgb(0, 0, 0);
-    border-right-color: rgb(0, 0, 0);
-    border-top-color: rgb(0, 0, 0);
-    border-bottom-color: rgb(0, 0, 0);
 }
 
 .unity-button:active {
-    background-color: rgb(99, 81, 53);
     color: rgb(255, 255, 255);
     font-size: 53px;
-    border-top-width: 15px;
-    border-right-width: 15px;
-    border-bottom-width: 15px;
-    border-left-width: 15px;
-    border-left-color: rgb(0, 0, 0);
-    border-right-color: rgb(0, 0, 0);
-    border-top-color: rgb(0, 0, 0);
-    border-bottom-color: rgb(0, 0, 0);
     scale: 0.95 0.95;
 }

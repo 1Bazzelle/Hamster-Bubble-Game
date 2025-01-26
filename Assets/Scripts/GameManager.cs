@@ -95,6 +95,15 @@ public class GameManager : MonoBehaviour
 
         playerScript.playerIndex = joystickID;
     }
+    public Player GetPlayerByJoystick(int joystickID)
+    {
+        foreach((Player player, int joystick) player in players)
+        {
+            if (player.joystick == joystickID) return player.player;
+        }
+        Debug.LogWarning("Didnt find player with that Joystick");
+        return null;
+    }
 
     public int GetJoystickID(int playerIndex)
     {

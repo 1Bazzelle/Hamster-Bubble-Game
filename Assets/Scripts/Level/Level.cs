@@ -10,6 +10,8 @@ public class Level : MonoBehaviour
     [SerializeField] private float endPos;
 
     [SerializeField] private List<Transform> playerStartPos;
+
+    [SerializeField] private BoxCollider finishLine;
     public Sprite levelImage;
 
     private bool started;
@@ -41,10 +43,9 @@ public class Level : MonoBehaviour
             initialCooldown -= Time.deltaTime;
             return;
         }
-        Debug.Log("Initial Cooldown over");
         if (!started)
         {
-            if (Input.anyKey)
+            if (Input.anyKeyDown)
             {
                 Debug.Log("any key pressed");
                 StartLevel();
