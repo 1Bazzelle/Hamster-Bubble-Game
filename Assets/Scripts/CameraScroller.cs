@@ -46,3 +46,5 @@ public class CameraScroller : MonoBehaviour
         return allPos / GameManager.Instance.players.Count;
     }
 }
+
+//
