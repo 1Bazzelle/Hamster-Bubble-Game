@@ -8,10 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8995019832728915145, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.6654186
@@ -52,97 +48,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8020791583029768444, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7941354357970673126, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7392325522386293933, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6695283030453085462, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4125165576271840403, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -3001964784254948089, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -2414782224270899091, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -1350709051187093080, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -704864861644768541, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
       propertyPath: m_Name
       value: Hallway Tube 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2340238514108959406, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2672850548493275065, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3316873349491149165, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3505000080115578160, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3780569777165340163, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4011999015877031236, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5692505142213526731, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6261147973934774911, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6261841866146744265, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6851377005230650179, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552089897028724056, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8819911296224541149, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854298281392119365, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1810168834078708019, guid: 5e1a1c77440fea645b9a180eea49eb84, type: 3}

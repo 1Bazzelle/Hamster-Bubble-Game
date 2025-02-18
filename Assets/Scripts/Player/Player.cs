@@ -144,13 +144,15 @@ public class Player : MonoBehaviour
         if (boioioingFactor <= 0)
         {
             boioioingFactor = 0;
-            bubble.transform.localScale = Vector3.one * 2;
+            bubble.transform.localScale = Vector3.one * 2; // Reset to default size
             return;
         }
 
+        // Oscillate the bubble's size around its default scale (2, 2, 2)
         float scaleOffset = Mathf.Sin(Time.time * boioioingSpeed + boioioingTimeOffset) * boioioingFactor;
         bubble.transform.localScale = Vector3.one * (2 + scaleOffset);
 
+        // Gradually decrease the boioioing effect
         boioioingFactor -= Time.deltaTime * boioioingFalloff;
     }
 

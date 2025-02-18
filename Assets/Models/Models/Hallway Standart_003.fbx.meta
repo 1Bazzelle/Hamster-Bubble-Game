@@ -3,32 +3,7 @@ guid: 4193e4e77958cae42915ab5b7a17ca14
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Edge
-    second: {fileID: 2100000, guid: 15a234e32b0a24744a40933ec24b3f25, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hallway
-    second: {fileID: 2100000, guid: 2056bdcc00d361d439a05742d2e8bda0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Panel
-    second: {fileID: 2100000, guid: c5c1d7c244a103c46aafb67436a7da4a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Transition
-    second: {fileID: 2100000, guid: 3fb57b4a3752fe84aa5e36479ba51965, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wire
-    second: {fileID: 2100000, guid: df7be0751ca30774b949047cbb531b77, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -60,7 +35,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
