@@ -1,10 +1,20 @@
+using NUnit.Framework.Constraints;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement
 {
     private Player player;
     private PlayerMoveData moveData;
+
+    // Input System
+    private PlayerControls playerControls;
+    private InputAction move;
+    private InputAction dash;
+
+
+    // Others stuff
     private int playerIndex;
     private Rigidbody rb;
     private Animator animator;
@@ -14,17 +24,29 @@ public class PlayerMovement
     private float dashTimer;
     private bool dashButtonPressed;
 
-    public void Initialize(int joystickIndex, PlayerMoveData pMoveData, Rigidbody rigidbody, Animator animation)
+    public void Enable(Player pplayer, PlayerMoveData pMoveData, Rigidbody rigidbody, Animator animation)
     {
+        if(playerControls == null) playerControls = new();
+
+        move = playerControls.Player.Move;
+        move.Enable();
+        dash = playerControls.Player.Dash;
+        dash.Enable();
+
         moveData = pMoveData;
-        playerIndex = joystickIndex;
+
         rb = rigidbody;
         animator = animation;
 
         dashing = false;
         dashTimer = 0;
 
-        player = GameManager.Instance.GetPlayerByJoystick(playerIndex);
+        player = pplayer;
+    }
+    public void Disable()
+    {
+        move.Disable();
+        dash.Disable();
     }
     public void Update()
     {
@@ -45,53 +67,44 @@ public class PlayerMovement
         #endregion
 
         #region Regular Movement
-        string leftStickHorizontal = $"Horizontal{playerIndex}";
-        string leftStickVertical = $"Vertical{playerIndex}";
 
-        float horizontalInput = Input.GetAxis(leftStickHorizontal);
-        float verticalInput = Input.GetAxis(leftStickVertical);
+                Vector2 moveDirection = move.ReadValue<Vector2>();
 
-        if ((horizontalInput >= 0 && rb.linearVelocity.x < moveData.maxHorizontalVel) || 
-            (horizontalInput <= 0 && rb.linearVelocity.x > -moveData.maxHorizontalVel))
-        {
-            rb.linearVelocity += new Vector3( horizontalInput * moveData.horizontalAccel, 0, 0 );
-            if (animator.speed == 0) animator.speed = moveData.animationSpeed;
-        }
+                if ((moveDirection.x >= 0 && rb.linearVelocity.x < moveData.maxHorizontalVel) || 
+                    (moveDirection.x <= 0 && rb.linearVelocity.x > -moveData.maxHorizontalVel))
+                {
+                    rb.linearVelocity += new Vector3( moveDirection.x * moveData.horizontalAccel, 0, 0 );
+                    if (animator.speed == 0) animator.speed = moveData.animationSpeed;
+                }
 
-        if ((verticalInput >= 0 && rb.linearVelocity.y < moveData.maxVerticalVel) || 
-            (verticalInput <= 0 && rb.linearVelocity.y > -moveData.maxVerticalVel))
-        {
-            rb.linearVelocity += new Vector3( 0, verticalInput * moveData.verticalAccel, 0 );
-            if (animator.speed == 0) animator.speed = moveData.animationSpeed;
-        }
+                if ((moveDirection.y >= 0 && rb.linearVelocity.y < moveData.maxVerticalVel) || 
+                    (moveDirection.y <= 0 && rb.linearVelocity.y > -moveData.maxVerticalVel))
+                {
+                    rb.linearVelocity += new Vector3( 0, moveDirection.y * moveData.verticalAccel, 0 );
+                    if (animator.speed == 0) animator.speed = moveData.animationSpeed;
+                }
 
-        if (horizontalInput == 0 && verticalInput == 0)
-        {
-            animator.speed = 0;
-        }
-        #endregion
+                if (moveDirection.x == 0 && moveDirection.y == 0)
+                {
+                    animator.speed = 0;
+                }
 
-        #region Gravity
-        if (moveData.appliedGravity > 0)
-        {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y - moveData.appliedGravity, rb.linearVelocity.z);
-        }
         #endregion
 
         #region Dash
 
-        if (!dashing && player.dashCharges > 0 && horizontalInput != 0 && verticalInput != 0)
+        if (!dashing && player.dashCharges > 0 && moveDirection.x != 0 && moveDirection.y != 0)
         {
             //Debug.Log("CAN DASH");
         }
 
-        if (Input.GetKey(buttonA) && !dashButtonPressed && !dashing && player.dashCharges > 0 && horizontalInput != 0 && verticalInput != 0)
+        if (Input.GetKey(buttonA) && !dashButtonPressed && !dashing && player.dashCharges > 0 && moveDirection.x != 0 && moveDirection.y != 0)
         {
             player.dashCharges--;
             player.UpdateDashDebug();
 
 
-            dashDirec = new Vector3(horizontalInput, verticalInput, 0).normalized;
+            dashDirec = new Vector3(moveDirection.x, moveDirection.y, 0).normalized;
 
             dashTimer = moveData.dashDuration;
             dashing = true;

@@ -36,7 +36,7 @@ public class CameraScroller : MonoBehaviour
     }
     private float GetAveragePlayerX()
     {
-        if (GameManager.Instance.players.Count == 0) return 0;
+        if (GameManager.Instance == null || GameManager.Instance.players.Count == 0) return 0;
 
         float allPos = 0;
         for (int i = 0; i < GameManager.Instance.players.Count; i++)

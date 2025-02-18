@@ -26,13 +26,16 @@ public class Level : MonoBehaviour
         startCountdown = 0.5f;
         initialCooldown = 0.5f;
 
-        // Spawn Players at their positions and lock their movement
-        for (int i = 0; i < GameManager.Instance.players.Count; i++)
+        if(GameManager.Instance != null)
         {
-            GameManager.Instance.players[i].player.transform.position = playerStartPos[i].position;
-            GameManager.Instance.players[i].player.gameObject.SetActive(true);
+            // Spawn Players at their positions and lock their movement
+            for (int i = 0; i < GameManager.Instance.players.Count; i++)
+            {
+                GameManager.Instance.players[i].player.transform.position = playerStartPos[i].position;
+                GameManager.Instance.players[i].player.gameObject.SetActive(true);
+            }
+            GameManager.Instance.LockPlayerMovement();
         }
-        GameManager.Instance.LockPlayerMovement();
     }
 
 
@@ -60,7 +63,7 @@ public class Level : MonoBehaviour
 
             UIManager.Instance.countdown = -1;
 
-            GameManager.Instance.UnlockPlayerMovement();
+            if(GameManager.Instance != null) GameManager.Instance.UnlockPlayerMovement();
         }
         if (startCountdown > 0)
         {

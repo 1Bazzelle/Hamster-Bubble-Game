@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public struct PlayerMoveData
@@ -65,14 +67,14 @@ public class Player : MonoBehaviour
     [Header("Particles")]
     [SerializeField] private ParticleSystem dashParticles;
 
+    private void Awake()
+    {
+    }
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
 
         debugSpheres = new();
-
-        movement = new();
-        movement.Initialize(playerIndex, moveData, rb, animator);
 
         dashCharges = moveData.maxDashCharges;
 
@@ -85,7 +87,15 @@ public class Player : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
 
         hasFinished = false;
+
+        if(movement == null) movement = new();
+        movement.Enable(this, moveData, rb, animator);
     }
+    private void OnDisable()
+    {
+        movement.Disable();
+    }    
+    
     private void Update()
     {
         Boioioing();
@@ -93,8 +103,6 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!movementLocked) movement.Update();
-
         foreach (var joystick in Input.GetJoystickNames())
         {
             if (joystick == "") Debug.LogWarning("Somthins not connected");
@@ -112,7 +120,7 @@ public class Player : MonoBehaviour
 
         // Let the movement script know
         Vector3 normal = collision.contacts[0].normal;
-        movement.OnCollision(normal);
+        //movement.OnCollision(normal);
 
         Vector3 sum = Vector3.zero;
 
